@@ -13100,29 +13100,29 @@ module.exports = {
 var _ = {escape: _dereq_("lodash.escape")};
 module.exports = function(obj){
 var __t,__p='',__j=Array.prototype.join,print=function(){__p+=__j.call(arguments,'');};
-with(obj||{}){
-__p+='<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n<w:document\n  xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"\n  xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math"\n  xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"\n  xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing"\n  xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main"\n  xmlns:ns6="http://schemas.openxmlformats.org/schemaLibrary/2006/main"\n  xmlns:c="http://schemas.openxmlformats.org/drawingml/2006/chart"\n  xmlns:ns8="http://schemas.openxmlformats.org/drawingml/2006/chartDrawing"\n  xmlns:dgm="http://schemas.openxmlformats.org/drawingml/2006/diagram"\n  xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture"\n  xmlns:ns11="http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing"\n  xmlns:dsp="http://schemas.microsoft.com/office/drawing/2008/diagram"\n  xmlns:ns13="urn:schemas-microsoft-com:office:excel"\n  xmlns:o="urn:schemas-microsoft-com:office:office"\n  xmlns:v="urn:schemas-microsoft-com:vml"\n  xmlns:w10="urn:schemas-microsoft-com:office:word"\n  xmlns:ns17="urn:schemas-microsoft-com:office:powerpoint"\n  xmlns:odx="http://opendope.org/xpaths"\n  xmlns:odc="http://opendope.org/conditions"\n  xmlns:odq="http://opendope.org/questions"\n  xmlns:odi="http://opendope.org/components"\n  xmlns:odgm="http://opendope.org/SmartArt/DataHierarchy"\n  xmlns:ns24="http://schemas.openxmlformats.org/officeDocument/2006/bibliography"\n  xmlns:ns25="http://schemas.openxmlformats.org/drawingml/2006/compatibility"\n  xmlns:ns26="http://schemas.openxmlformats.org/drawingml/2006/lockedCanvas">\n  <w:body>\n    <w:altChunk r:id="htmlChunk" />\n    <w:sectPr>\n      <w:pgSz w:w="'+
-((__t=( width ))==null?'':__t)+
+obj || (obj = {})
+obj.__p+='<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n<w:document\n  xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"\n  xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math"\n  xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"\n  xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing"\n  xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main"\n  xmlns:ns6="http://schemas.openxmlformats.org/schemaLibrary/2006/main"\n  xmlns:c="http://schemas.openxmlformats.org/drawingml/2006/chart"\n  xmlns:ns8="http://schemas.openxmlformats.org/drawingml/2006/chartDrawing"\n  xmlns:dgm="http://schemas.openxmlformats.org/drawingml/2006/diagram"\n  xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture"\n  xmlns:ns11="http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing"\n  xmlns:dsp="http://schemas.microsoft.com/office/drawing/2008/diagram"\n  xmlns:ns13="urn:schemas-microsoft-com:office:excel"\n  xmlns:o="urn:schemas-microsoft-com:office:office"\n  xmlns:v="urn:schemas-microsoft-com:vml"\n  xmlns:w10="urn:schemas-microsoft-com:office:word"\n  xmlns:ns17="urn:schemas-microsoft-com:office:powerpoint"\n  xmlns:odx="http://opendope.org/xpaths"\n  xmlns:odc="http://opendope.org/conditions"\n  xmlns:odq="http://opendope.org/questions"\n  xmlns:odi="http://opendope.org/components"\n  xmlns:odgm="http://opendope.org/SmartArt/DataHierarchy"\n  xmlns:ns24="http://schemas.openxmlformats.org/officeDocument/2006/bibliography"\n  xmlns:ns25="http://schemas.openxmlformats.org/drawingml/2006/compatibility"\n  xmlns:ns26="http://schemas.openxmlformats.org/drawingml/2006/lockedCanvas">\n  <w:body>\n    <w:altChunk r:id="htmlChunk" />\n    <w:sectPr>\n      <w:pgSz w:w="'+
+((obj.__t=( width ))==null?'':obj.__t)+
 '" w:h="'+
-((__t=( height ))==null?'':__t)+
+((obj.__t=( height ))==null?'':obj.__t)+
 '" w:orient="'+
-((__t=( orient ))==null?'':__t)+
+((obj.__t=( orient ))==null?'':obj.__t)+
 '" />\n      <w:pgMar w:top="'+
-((__t=( margins.top ))==null?'':__t)+
+((obj.__t=( margins.top ))==null?'':obj.__t)+
 '"\n               w:right="'+
-((__t=( margins.right ))==null?'':__t)+
+((obj.__t=( margins.right ))==null?'':obj.__t)+
 '"\n               w:bottom="'+
-((__t=( margins.bottom ))==null?'':__t)+
+((obj.__t=( margins.bottom ))==null?'':obj.__t)+
 '"\n               w:left="'+
-((__t=( margins.left ))==null?'':__t)+
+((obj.__t=( margins.left ))==null?'':obj.__t)+
 '"\n               w:header="'+
-((__t=( margins.header ))==null?'':__t)+
+((obj.__t=( margins.header ))==null?'':obj.__t)+
 '"\n               w:footer="'+
-((__t=( margins.footer ))==null?'':__t)+
+((obj.__t=( margins.footer ))==null?'':obj.__t)+
 '"\n               w:gutter="'+
-((__t=( margins.gutter ))==null?'':__t)+
+((obj.__t=( margins.gutter ))==null?'':obj.__t)+
 '"/>\n    </w:sectPr>\n  </w:body>\n</w:document>\n';
-}
+
 return __p;
 };
 
@@ -13130,13 +13130,14 @@ return __p;
 var _ = {escape: _dereq_("lodash.escape")};
 module.exports = function(obj){
 var __t,__p='',__j=Array.prototype.join,print=function(){__p+=__j.call(arguments,'');};
-with(obj||{}){
-__p+='MIME-Version: 1.0\nContent-Type: multipart/related;\n    type="text/html";\n    boundary="----=mhtDocumentPart"\n\n\n------=mhtDocumentPart\nContent-Type: text/html;\n    charset="utf-8"\nContent-Transfer-Encoding: quoted-printable\nContent-Location: file:///C:/fake/document.html\n\n'+
-((__t=( htmlSource ))==null?'':__t)+
+obj || (obj = {})
+
+obj.__p+='MIME-Version: 1.0\nContent-Type: multipart/related;\n    type="text/html";\n    boundary="----=mhtDocumentPart"\n\n\n------=mhtDocumentPart\nContent-Type: text/html;\n    charset="utf-8"\nContent-Transfer-Encoding: quoted-printable\nContent-Location: file:///C:/fake/document.html\n\n'+
+((obj.__t=( htmlSource ))==null?'':obj.__t)+
 '\n\n'+
-((__t=( contentParts ))==null?'':__t)+
+((obj.__t=( contentParts ))==null?'':obj.__t)+
 '\n\n------=mhtDocumentPart--\n';
-}
+
 return __p;
 };
 
@@ -13144,17 +13145,17 @@ return __p;
 var _ = {escape: _dereq_("lodash.escape")};
 module.exports = function(obj){
 var __t,__p='',__j=Array.prototype.join,print=function(){__p+=__j.call(arguments,'');};
-with(obj||{}){
+obj || (obj = {})
 __p+='------=mhtDocumentPart\nContent-Type: '+
-((__t=( contentType ))==null?'':__t)+
+((obj.__t=( contentType ))==null?'':obj.__t)+
 '\nContent-Transfer-Encoding: '+
-((__t=( contentEncoding ))==null?'':__t)+
+((obj.__t=( contentEncoding ))==null?'':obj.__t)+
 '\nContent-Location: '+
-((__t=( contentLocation ))==null?'':__t)+
+((obj.__t=( contentLocation ))==null?'':obj.__t)+
 '\n\n'+
-((__t=( encodedContent ))==null?'':__t)+
+((obj.__t=( encodedContent ))==null?'':obj.__t)+
 '\n';
-}
+
 return __p;
 };
 

@@ -13,15 +13,16 @@
   },
   "browserify": {
     "transform": [
-      "coffeeify",
       "brfs"
     ]
   },
   "author": "Artur Nowak <artur.nowak@evidenceprime.com>",
-  "contributors": [{
-    "name": "Ievgen Martynov",
-    "email": "ievgen.martynov@gmail.com"
-  }],
+  "contributors": [
+    {
+      "name": "Ievgen Martynov",
+      "email": "ievgen.martynov@gmail.com"
+    }
+  ],
   "license": "MIT",
   "devDependencies": {
     "brfs": "^1.1.2",

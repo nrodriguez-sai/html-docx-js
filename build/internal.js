@@ -70,7 +70,7 @@ export function renderDocumentFile(documentOptions) {
 
 export async function readFileAsync(path) {
   return new Promise((resolve, reject) => {
-    BrowserFS.fs.root.readFile(path, (err, data) => {
+    fs.root.readFile(path, (err, data) => {
       if (err) {
         return reject(err);
       }

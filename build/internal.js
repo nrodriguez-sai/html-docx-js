@@ -5,10 +5,13 @@
  * DS207: Consider shorter variations of null checks
  * Full docs: https://github.com/decaffeinate/decaffeinate/blob/main/docs/suggestions.md
  */
-const fs = require('fs');
 const documentTemplate = require('./templates/document');
 const utils = require('./utils');
 const _ = {merge: require('lodash.merge')};
+const browserfs = require('browserfs');
+
+// create an instance of BrowserFS
+const fs = browserfs.BFSRequire('fs');
 
 let dirPath;
 
@@ -62,13 +65,24 @@ module.exports = {
     return documentTemplate(templateData);
   },
 
-  addFiles(zip, htmlSource, documentOptions) {
-    zip.file('[Content_Types].xml', fs.readFileSync(dirPath + '/assets/content_types.xml'));
-    zip.folder('_rels').file('.rels', fs.readFileSync(dirPath + '/assets/rels.xml'));
+  async readFileAsync(path) {
+    return new Promise((resolve, reject) => {
+      BrowserFS.fs.root.readFile(path, (err, data) => {
+        if (err) {
+          return reject(err);
+        }
+        resolve(data.toString());
+      });
+    });
+  },
+
+  async addFiles(zip, htmlSource, documentOptions) {
+    zip.file('[Content_Types].xml', await readFileAsync('/assets/content_types.xml'));
+    zip.folder('_rels').file('.rels', await readFileAsync('/assets/rels.xml'));
     return zip.folder('word')
       .file('document.xml', this.renderDocumentFile(documentOptions))
       .file('afchunk.mht', utils.getMHTdocument(htmlSource))
       .folder('_rels')
-        .file('document.xml.rels', fs.readFileSync(dirPath + '/assets/document.xml.rels'));
+        .file('document.xml.rels', await readFileAsync('/assets/document.xml.rels'));
   }
 };

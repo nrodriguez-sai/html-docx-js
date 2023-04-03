@@ -7,9 +7,9 @@ const JSZip = require('jszip');
 const internal = require('./internal');
 
 module.exports = {
-  asBlob(html, options) {
+  async asBlob(html, options) {
     const zip = new JSZip();
-    internal.addFiles(zip, html, options);
+    await internal.addFiles(zip, html, options);
     return internal.generateDocument(zip);
   }
 };

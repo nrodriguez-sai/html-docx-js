@@ -44,6 +44,7 @@
     "watchify": "^4.0.0"
   },
   "dependencies": {
+    "browserfs": "^1.4.3",
     "jszip": "^3.10.1",
     "rimraf": "^4.4.1"
   }

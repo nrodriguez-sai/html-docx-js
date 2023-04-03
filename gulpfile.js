@@ -51,7 +51,7 @@ const build = function(test) {
   const bundle = function() {
     logger.start();
     return bundler
-      .transform('brfs', {engine: 'lodash-micro', minifierOpts: false})
+      .transform('jstify', {engine: 'lodash-micro', minifierOpts: false})
       .bundle(options)
       .on('error', handleErrors)
       .pipe(vinyl(output))

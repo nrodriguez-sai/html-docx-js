@@ -7,7 +7,7 @@
  */
 const documentTemplate = require('./templates/document');
 const utils = require('./utils');
-const _ = {merge: require('lodash.merge')};
+const _ = { merge: require('lodash.merge') };
 const browserfs = require('browserfs');
 
 // create an instance of BrowserFS
@@ -27,62 +27,64 @@ if (typeof __dirname !== 'undefined') {
   throw new Error('Unable to determine directory path');
 }
 
-module.exports = {
-  generateDocument(zip) {
-    const buffer = zip.generate({type: 'arraybuffer'});
-    if (global.Blob) {
-      return new Blob([buffer],
-        {type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'});
-    } else if (global.Buffer) {
-      return new Buffer(new Uint8Array(buffer));
-    } else {
-      throw new Error("Neither Blob nor Buffer are accessible in this environment. " +
-        "Consider adding Blob.js shim"
-      );
-    }
-  },
-
-  renderDocumentFile(documentOptions) {
-    if (documentOptions == null) { documentOptions = {}; }
-    const templateData = _.merge({margins: {
-      top: 1440,
-      right: 1440,
-      bottom: 1440,
-      left: 1440,
-      header: 720,
-      footer: 720,
-      gutter: 0
-    }
+export function generateDocument(zip) {
+  const buffer = zip.generate({ type: 'arraybuffer' });
+  if (global.Blob) {
+    return new Blob([buffer],
+      { type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' });
+  } else if (global.Buffer) {
+    return new Buffer(new Uint8Array(buffer));
+  } else {
+    throw new Error("Neither Blob nor Buffer are accessible in this environment. " +
+      "Consider adding Blob.js shim"
+    );
   }
-    ,
-      (() => { switch (documentOptions.orientation) {
-        case 'landscape': return {height: 12240, width: 15840, orient: 'landscape'};
-        default: return {width: 12240, height: 15840, orient: 'portrait'};
-      } })()
-    ,
-      {margins: documentOptions.margins});
+}
 
-    return documentTemplate(templateData);
-  },
+export function renderDocumentFile(documentOptions) {
+  if (documentOptions == null) { documentOptions = {}; }
+  const templateData = _.merge(
+    {
+      margins: {
+        top: 1440,
+        right: 1440,
+        bottom: 1440,
+        left: 1440,
+        header: 720,
+        footer: 720,
+        gutter: 0
+      }
+    }
+    ,
+    (() => {
+      switch (documentOptions.orientation) {
+        case 'landscape': return { height: 12240, width: 15840, orient: 'landscape' };
+        default: return { width: 12240, height: 15840, orient: 'portrait' };
+      }
+    })()
+    ,
+    { margins: documentOptions.margins });
 
-  async readFileAsync(path) {
-    return new Promise((resolve, reject) => {
-      BrowserFS.fs.root.readFile(path, (err, data) => {
-        if (err) {
-          return reject(err);
-        }
-        resolve(data.toString());
-      });
+  return documentTemplate(templateData);
+}
+
+export async function readFileAsync(path) {
+  return new Promise((resolve, reject) => {
+    BrowserFS.fs.root.readFile(path, (err, data) => {
+      if (err) {
+        return reject(err);
+      }
+      resolve(data.toString());
     });
-  },
+  });
+}
 
-  async addFiles(zip, htmlSource, documentOptions) {
-    zip.file('[Content_Types].xml', await readFileAsync('/assets/content_types.xml'));
-    zip.folder('_rels').file('.rels', await readFileAsync('/assets/rels.xml'));
-    return zip.folder('word')
-      .file('document.xml', this.renderDocumentFile(documentOptions))
-      .file('afchunk.mht', utils.getMHTdocument(htmlSource))
-      .folder('_rels')
-        .file('document.xml.rels', await readFileAsync('/assets/document.xml.rels'));
-  }
-};
+export async function addFiles(zip, htmlSource, documentOptions) {
+  zip.file('[Content_Types].xml', await readFileAsync('/assets/content_types.xml'));
+  zip.folder('_rels').file('.rels', await readFileAsync('/assets/rels.xml'));
+  return zip.folder('word')
+    .file('document.xml', this.renderDocumentFile(documentOptions))
+    .file('afchunk.mht', utils.getMHTdocument(htmlSource))
+    .folder('_rels')
+    .file('document.xml.rels', await readFileAsync('/assets/document.xml.rels'));
+}

@@ -15,7 +15,7 @@ const notify = require('gulp-notify');
 const mocha = require('gulp-mocha');
 const mochaPhantomJS = require('gulp-mocha-phantomjs');
 const template = require('gulp-lodash-template');
-const rimraf = require('del');
+const rimraf = require('rimraf');
 
 let startTime = null;
 const logger = {
@@ -67,15 +67,7 @@ const build = function(test) {
 };
 
 async function clean() {
-  return new Promise((resolve, reject) => {
-    rimraf('build', (err) => {
-      if (err) {
-        reject(err);
-      } else {
-        resolve();
-      }
-    });
-  });
+  rimraf('build');
 }
 
 gulp.task('clean', clean);

@@ -10,6 +10,13 @@ const utils = require('./utils');
 const _ = { merge: require('lodash.merge') };
 const browserfs = require('browserfs');
 
+browserfs.configure({
+  fs: "MountableFileSystem",
+  options: {
+    '/': { fs: 'InMemory' }
+  }
+});
+
 // create an instance of BrowserFS
 const fs = browserfs.BFSRequire('fs');
 

@@ -9,7 +9,7 @@
   },
   "scripts": {
     "test": "gulp test-node",
-    "prepublish": "gulp clean; gulp build-node"
+    "prepublish": "gulp clean && gulp build-node"
   },
   "browserify": {
     "transform": [
@@ -30,6 +30,7 @@
     "chai": "^4.3.7",
     "del": "^7.0.0",
     "gulp": "^4.0.2",
+    "gulp-lodash-template": "file:forked-libraries/gulp-lodash-template/gulp-lodash-template-0.2.0.tgz",
     "gulp-mocha": "^8.0.0",
     "gulp-mocha-phantomjs": "^0.12.2",
     "gulp-notify": "^4.0.0",
@@ -43,7 +44,6 @@
     "watchify": "^4.0.0"
   },
   "dependencies": {
-    "gulp-lodash-template": "./forked-libraries/gulp-lodash-template/gulp-lodash-template-0.2.0.tgz",
     "jszip": "^3.10.1",
     "rimraf": "^4.4.1"
   }

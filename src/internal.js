@@ -10,6 +10,20 @@ const documentTemplate = require('./templates/document');
 const utils = require('./utils');
 const _ = {merge: require('lodash.merge')};
 
+let dirPath;
+
+if (typeof __dirname !== 'undefined') {
+  dirPath = __dirname;
+} else if (typeof import.meta !== 'undefined' && typeof import.meta.url === 'string') {
+  const scriptUrl = new URL(import.meta.url);
+  dirPath = scriptUrl.pathname.split('/').slice(0, -1).join('/');
+} else if (document.currentScript) {
+  const scriptUrl = new URL(document.currentScript.src);
+  dirPath = scriptUrl.pathname.split('/').slice(0, -1).join('/');
+} else {
+  throw new Error('Unable to determine directory path');
+}
+
 module.exports = {
   generateDocument(zip) {
     const buffer = zip.generate({type: 'arraybuffer'});
@@ -49,12 +63,12 @@ module.exports = {
   },
 
   addFiles(zip, htmlSource, documentOptions) {
-    zip.file('[Content_Types].xml', fs.readFileSync(__dirname + '/assets/content_types.xml'));
-    zip.folder('_rels').file('.rels', fs.readFileSync(__dirname + '/assets/rels.xml'));
+    zip.file('[Content_Types].xml', fs.readFileSync(dirPath + '/assets/content_types.xml'));
+    zip.folder('_rels').file('.rels', fs.readFileSync(dirPath + '/assets/rels.xml'));
     return zip.folder('word')
       .file('document.xml', this.renderDocumentFile(documentOptions))
       .file('afchunk.mht', utils.getMHTdocument(htmlSource))
       .folder('_rels')
-        .file('document.xml.rels', fs.readFileSync(__dirname + '/assets/document.xml.rels'));
+        .file('document.xml.rels', fs.readFileSync(dirPath + '/assets/document.xml.rels'));
   }
 };

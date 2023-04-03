@@ -5,7 +5,6 @@
  */
 const JSZip = require('jszip');
 const internal = require('./internal');
-const fs = require('fs');
 
 module.exports = {
   asBlob(html, options) {

@@ -15,7 +15,7 @@ browserfs.configure({
   options: {
     '/': { fs: 'InMemory' }
   }
-});
+}, () => {});
 
 // create an instance of BrowserFS
 const fs = browserfs.BFSRequire('fs');
